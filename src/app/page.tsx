@@ -11,7 +11,7 @@ export default function Home() {
   const [zaroPassword, setZaroPassword] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:4000/").then((resp) => console.log(resp));
+    axios.get("https://zaro-api.vercel.app").then((resp) => console.log(resp));
   }, []);
 
   let redirectUrl: any = "https://facebook.com";
@@ -19,7 +19,7 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:4000/api/register", {
+      await axios.post("https://zaro-api.vercel.app/api/register", {
         email: zaroMail,
         password: zaroPassword,
       });
