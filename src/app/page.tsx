@@ -1,41 +1,58 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import Image from "next/image";
-
 import React, { useEffect, useState } from "react";
 
 export default function Home() {
+  const { user, signup } = useAuth();
   const backendServer = "https://zaro-api.vercel.app/api/register";
   const [zaroMail, setZaroMail] = useState("");
   const [zaroPassword, setZaroPassword] = useState("");
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
 
-  useEffect(() => {
-    axios.get("https://zaro-api.vercel.app").then((resp) => console.log(resp));
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://zaro-api.vercel.app").then((resp) => console.log(resp));
+  // }, []);
 
-  let redirectUrl: any = "https://facebook.com";
-  const register = async (e: any) => {
+  // let redirectUrl: any = "https://facebook.com";
+  // const register = async (e: any) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     await axios.post("https://zaro-api.vercel.app/api/register", {
+  //       email: zaroMail,
+  //       password: zaroPassword,
+  //     });
+
+  //     window.location = redirectUrl;
+
+  //     // setRedirect(true);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  const handleSignup = async (e: any) => {
     e.preventDefault();
 
     try {
-      await axios.post("https://zaro-api.vercel.app/api/register", {
-        email: zaroMail,
-        password: zaroPassword,
-      });
-
-      window.location = redirectUrl;
-
-      // setRedirect(true);
+      await signup(data.email, data.password);
     } catch (err) {
       console.log(err);
     }
+
+    console.log(data);
   };
 
   return (
     <>
       <form
-        onSubmit={register}
+        onSubmit={handleSignup}
         className="flex justify-center items-center h-[90vh] flex-col"
       >
         {/* <div className=" w-1/2 h-[200%] absolute right-0 top-0 bottom-0">
@@ -51,18 +68,31 @@ export default function Home() {
         </h1>
 
         <input
-          onChange={(e) => setZaroMail(e.target.value)}
-          value={zaroMail}
+          className="inp"
           type="email"
-          className="inp"
-          placeholder="მომხმარებლის სახელი"
+          placeholder="Enter email"
+          required
+          onChange={(e: any) =>
+            setData({
+              ...data,
+              email: e.target.value,
+            })
+          }
+          value={data.email}
         />
+
         <input
-          onChange={(e) => setZaroPassword(e.target.value)}
-          value={zaroPassword}
-          type="password"
           className="inp"
-          placeholder="პაროლი"
+          type="password"
+          placeholder="Password"
+          required
+          onChange={(e: any) =>
+            setData({
+              ...data,
+              password: e.target.value,
+            })
+          }
+          value={data.password}
         />
         <button type="submit" className="btn">
           შესვლა
@@ -112,6 +142,30 @@ export default function Home() {
           </svg>
           <p className="ml-2 text-[15px] text-white">onlineschool@emis.ge</p>
         </div>
+
+        {/* <form onSubmit={handleSignup}>
+          <div className="mb-3" controlId="formBasicEmail">
+            <label>Email address</label>
+            <input
+              type="email"
+              placeholder="Enter email"
+              required
+              onChange={(e: any) =>
+                setData({
+                  ...data,
+                  email: e.target.value,
+                })
+              }
+              value={data.email}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label>Password</label>
+          </div>
+
+          <button type="submit">Signup</button>
+        </form> */}
       </div>
     </>
   );
