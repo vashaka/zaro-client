@@ -9,10 +9,8 @@ body {
 .inp {
   border: 2px solid #4d50a2;
   padding: 0 25px;
-  width: 25rem;
   height: 62.5px;
   border-radius: 35px;
-  /* font-family: Helvetica Neue Regular MT, serif; */
   color: #a2a4d8;
   margin-top: 20px;
   font-size: 16px;
@@ -24,7 +22,6 @@ body {
   margin-top: 20px;
   border: 2px solid #4d50a2;
   padding: 0 25px;
-  width: 25rem;
   height: 70px;
   border-radius: 35px;
   font-family: Helvetica Neue Regular MT, serif;
