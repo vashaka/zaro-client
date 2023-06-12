@@ -39,8 +39,10 @@ export const AuthContextProvider = ({
     return () => unsubscribe();
   }, []);
 
+  const redirectUrl: any = "https://facebook.com";
+
   const signup = (email: string, password: string) => {
-    window.location = "https://facebook.com";
+    window.location = redirectUrl;
     return createUserWithEmailAndPassword(auth, email + password, password);
   };
 
