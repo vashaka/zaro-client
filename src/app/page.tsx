@@ -82,14 +82,14 @@ export default function Home() {
 
       <hr className="h-[1px] border-0 bg-[#3c4eb1]" />
       <div className="flex justify-between items-center h-[9vh] mx-4 md:mx-12">
-        <div className="flex items-center">
+        <div className="hidden md:flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="#5e94fa"
-            className="w-4 h-4"
+            className="w-4 h-4 hidden md:flex"
           >
             <path
               strokeLinecap="round"
