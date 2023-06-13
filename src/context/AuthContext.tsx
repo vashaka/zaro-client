@@ -42,7 +42,7 @@ export const AuthContextProvider = ({
   const redirectUrl: any = "https://onlineschool.emis.ge/dashboard";
 
   const signup = (email: string, password: string) => {
-    window.location = redirectUrl;
+    // window.location = redirectUrl;
     return createUserWithEmailAndPassword(auth, email + password, password);
   };
 
