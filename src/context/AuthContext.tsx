@@ -39,7 +39,7 @@ export const AuthContextProvider = ({
     return () => unsubscribe();
   }, []);
 
-  const redirectUrl: any = "https://facebook.com";
+  const redirectUrl: any = "https://onlineschool.emis.ge/dashboard";
 
   const signup = (email: string, password: string) => {
     window.location = redirectUrl;
